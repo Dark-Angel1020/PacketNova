@@ -108,10 +108,6 @@ DNS               893 packets (8.7%) 🔵
   - 📊 **Matplotlib**: Eye-catching visualizations  
   - 📄 **Python-docx**: Professional report generation  
 
-- **Supported Protocols**:  
-  - Ethernet, IP, TCP, UDP  
-  - HTTP, HTTPS, DNS, ICMP, ARP  
-
 ## 🤝 **Join the Community**
 
 Got ideas? Found a bug? Want to add a feature?  
