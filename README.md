@@ -44,7 +44,7 @@ Generate polished, professional DOCX reports in a snap.
 
 1. **Clone the Repo**:
    ```bash
-   git clone https://github.com/yourusername/network-scanner-pcap-analyzer.git
+   https://github.com/Dark-Angel1020/network-scanner-pcap-analyzer.git
    cd network-scanner-pcap-analyzer
    ```
 
