@@ -376,5 +376,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ---
 <div align="center">
   <p><i>Illuminate your network. Secure your data.</i></p>
-  <p>Made with ❤️ by Network Security Enthusiasts</p>
+  <p>Made with ❤️</p>
 </div>
