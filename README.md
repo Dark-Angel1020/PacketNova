@@ -44,8 +44,8 @@ Generate polished, professional DOCX reports in a snap.
 
 1. **Clone the Repo**:
    ```bash
-   https://github.com/Dark-Angel1020/network-scanner-pcap-analyzer.git
-   cd network-scanner-pcap-analyzer
+   https://github.com/Dark-Angel1020/PacketNova.git
+   cd PacketNova
    ```
 
 2. **Install Dependencies**:
