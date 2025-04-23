@@ -1,124 +1,380 @@
-# 🌐 **Network Scanner & PCAP Analyzer**
+<div align="center">
+  <h1>🌌 PacketNova 🌌</h1>
+  <h3>Advanced Network Analysis & Security Toolkit</h3>
 
-![Network Analysis](https://img.shields.io/badge/Network-Analysis-blue?style=for-the-badge) ![Python](https://img.shields.io/badge/Python-3.8%2B-green?style=for-the-badge) ![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)
+  ![License](https://img.shields.io/badge/license-MIT-blue)
+  ![Python](https://img.shields.io/badge/python-3.8%2B-brightgreen)
+  ![Version](https://img.shields.io/badge/version-1.0.0-orange)
+  ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey)
+  ![Status](https://img.shields.io/badge/status-active-success)
 
-> 🚀 **Unleash the Power of Network Insights!**  
-> A sleek, all-in-one tool for **real-time network scanning** and **deep PCAP analysis**—perfect for security pros, network admins, and curious tech enthusiasts.
+  <p>
+    <b>Decode your network's secrets with precision and elegance</b>
+  </p>
+  
+![image](https://github.com/user-attachments/assets/e517f8e8-4374-4fb4-88ed-7cacf7f36344)
 
-## 🎉 **Why You’ll Love This Tool**
+</div>
 
-🔍 **Scan Networks Like a Pro**  
-Discover devices, map services, and profile your network with ease.  
+## ✨ Features at a Glance
 
-📊 **Dive Deep into Packet Data**  
-Analyze PCAP files with stunning visualizations and detailed insights.  
+- **🔍 Comprehensive Network Discovery** - Map your entire network ecosystem
+- **📊 Advanced PCAP Analysis** - Forensic-level inspection of network traffic
+- **📝 Professional Report Generation** - Detailed documentation with visualizations
+- **🛡️ IP Reputation Intelligence** - Check IPs against global threat databases
+- **ℹ️ WHOIS Information Retrieval** - Access registration data for any IP/domain
+- **📈 Interactive Visual Analysis** - Dynamic, data-rich charts for traffic patterns
+- **🔐 Security-Focused Design** - Built with network security best practices
 
-📝 **Impress with Reports**  
-Generate polished, professional DOCX reports in a snap.  
+## 📋 Requirements
 
-## 🌟 **Features That Shine**
+```
+Python 3.8+
+nmap (with admin/root privileges for full functionality)
+Matplotlib and related visualization libraries
+Scapy for packet manipulation
+Python-docx for report generation
+API keys for services (VirusTotal)
+```
 
-### 🔎 **Network Scanning**
-- **Live Host Detection**: Spot every active device on your network in seconds.  
-- **Rich Device Profiles**:  
-  - 💻 IP & MAC addresses  
-  - 🏭 Vendor lookup  
-  - 🖥️ OS detection  
-  - 🔓 Open ports & services  
-- **Choose Your Scan Style**:  
-  - ⚡ Fast ARP scanning for quick results  
-  - 🛠️ Nmap-powered deep scans for ultimate detail  
+## 🚀 Installation
 
-### 📈 **PCAP Analysis**
-- **Protocol Insights**: See the breakdown of TCP, UDP, HTTP, DNS, and more.  
-- **IP & Port Analytics**: Track sources, destinations, and top ports.  
-- **Traffic Visuals**: Explore packet size histograms and arrival timelines.  
-- **Interactive Charts**: Powered by Matplotlib for dynamic exploration.  
-
-### 📚 **Reporting Made Simple**
-- **Professional DOCX Reports**: Auto-generated with embedded charts.  
-- **Console Summaries**: Quick, clean outputs for command-line fans.  
-- **Graphical Dashboards**: Visualize your data with style.  
-
-## 📦 **Get Started in Minutes**
-
-1. **Clone the Repo**:
+1. **Clone the repository**
    ```bash
    https://github.com/Dark-Angel1020/PacketNova.git
    cd PacketNova
    ```
 
-2. **Install Dependencies**:
+2. **Install dependencies**
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirement.txt
    ```
 
-3. **Optional Vendor Database Update**:
+3. **Configure API keys**
    ```bash
-   python -m mac_vendor_lookup --update
+   # Create a .env file with your API keys
+   echo "API_KEY=your_virustotal_api_key" > .env
+   echo "API_URL=https://www.virustotal.com/api/v3/ip_addresses/" >> .env
    ```
 
-## 🚀 **How to Use It**
+4. **Run with elevated privileges (for full functionality)**
+   ```bash
+   # On Linux/macOS
+   sudo python maiin.py
+   
+   # On Windows (Run PowerShell/CMD as Administrator)
+   python maiin.py
+   ```
 
-Launch the tool and explore its intuitive menu:
+## 📊 Complete Workflow & Command Outputs
+
+### Main Menu
+
+```
+==================================================
+        Network Scanner and Analysis Tool
+==================================================
+1. Get IP Addresses of All Network Devices
+2. Complete Network Scan
+3. Analyze Old Capture Files (Log Files)
+4. Generate Consolidated Report
+5. Graphical Analysis
+6. Whois Lookup
+7. Blacklist Check
+8. Exit
+==================================================
+```
+
+### 1. Get IP Addresses of All Network Devices
+
+This quick scan identifies all active hosts on your network.
+
+**Output Example:**
+```
+[+] Detecting active network interface...
+[i] Interface: eth0
+[i] Scanning subnet: 192.168.1.0/24
+[+] Running Nmap scan...
+
+============================================================
+              Live Hosts on Network:
+============================================================
+192.168.1.1     | MAC: 00:11:22:33:44:55
+192.168.1.5     | MAC: AA:BB:CC:DD:EE:FF
+192.168.1.10    | MAC: 11:22:33:44:55:66
+192.168.1.25    | MAC: FF:EE:DD:CC:BB:AA
+
+Total live hosts found: 4
+```
+
+### 2. Complete Network Scan
+
+Performs a comprehensive scan including OS detection, vendor identification, and open service enumeration.
+
+**Output Example:**
+```
+=== NMAP SCAN (Detailed) ===
+[+] Scanning network: 192.168.1.0/24 with Nmap (fast scan on specific ports)...
+
+=== ARP SCAN ===
+[+] Performing ARP scan on 192.168.1.0/24 ...
+
+📋 Network Devices:
+IP              MAC                  Vendor                    Model                          Services
+------------------------------------------------------------------------------------------------------------------------
+192.168.1.1     00:11:22:33:44:55    Cisco Systems             Linux Router 3.4 (Router)      80/tcp (http Apache 2.4.6), 443/tcp (https)
+192.168.1.5     AA:BB:CC:DD:EE:FF    Apple Inc.                macOS 12.0 (Computer)          None
+192.168.1.10    11:22:33:44:55:66    Samsung Electronics       Android 10 (Mobile device)     None
+192.168.1.25    FF:EE:DD:CC:BB:AA    Intel Corporate           Windows 10 21H2 (Computer)     445/tcp (microsoft-ds), 139/tcp (netbios-ssn)
+
+Do you want to save the results? (yes/no): yes
+[+] Results saved to ipsscan_2025-04-23_15-30-45.txt
+```
+
+### 3. Analyze Old Capture Files (Log Files)
+
+Select and analyze PCAP/PCAPNG files with detailed protocol breakdown.
+
+**Output Example:**
+```
+[+] Analyzing file: capture_2025-04-22.pcap
+
+============================================================
+                PCAP ANALYSIS RESULTS
+============================================================
+
+File Name:         capture_2025-04-22.pcap
+File Size:         4275.34 KB
+Total Packets:     2863
+Capture Duration:  120.57 seconds
+
+------------------------------------------------------------
+                PROTOCOL DISTRIBUTION
+------------------------------------------------------------
+TCP             1542 packets ( 53.9%)
+UDP              763 packets ( 26.7%)
+HTTP             341 packets ( 11.9%)
+DNS              189 packets (  6.6%)
+HTTPS            156 packets (  5.4%)
+ICMP              28 packets (  1.0%)
+
+------------------------------------------------------------
+                ALL SOURCE IPs
+------------------------------------------------------------
+192.168.1.5        1245 packets
+192.168.1.25        658 packets
+8.8.8.8             189 packets
+...
+
+------------------------------------------------------------
+                ALL DESTINATION IPs
+------------------------------------------------------------
+8.8.8.8             245 packets
+142.250.185.174     342 packets
+192.168.1.25        789 packets
+...
+
+------------------------------------------------------------
+                TOP DNS QUERIES
+------------------------------------------------------------
+  example.com.                                          35
+  googleapis.com.                                       24
+  google.com.                                           22
+  cloudfront.net.                                       18
+  amazonaws.com.                                        15
+```
+
+### 4. Generate Consolidated Report
+
+Creates a comprehensive DOCX report with analysis results and visualizations.
+
+**Output Example:**
+```
+[+] Report Generation Selected
+[+] Analyzing file for report: capture_2025-04-22.pcap
+[+] Generating charts and visualizations...
+[+] Compiling report sections...
+[+] Report successfully generated at: /home/user/PacketNova/PCAP_Report_capture_2025-04-22_pcap_PROFESSIONAL_2025-04-23 15_35_22.docx
+```
+
+The generated report includes:
+- Executive summary of traffic patterns
+- Detailed protocol analysis
+- Communication patterns between devices
+- Visual charts for traffic distribution
+- Anomaly detection and security recommendations
+
+### 5. Graphical Analysis
+
+Provides interactive visualizations for deeper analysis.
+
+**Output Example:**
+```
+[+] Graphical Analysis Selected
+[+] Analyzing file for visualization: capture_2025-04-22.pcap
+[+] Rendering visualizations...
+```
+*[The tool then displays interactive matplotlib charts showing protocol distribution, packet sizes, port usage, and timeline]*
+
+### 6. Whois Lookup
+
+Retrieves registration and ownership information for an IP address.
+
+**Output Example:**
+```
+Enter IP address to analyze: 8.8.8.8
+
+Information for: 8.8.8.8
+Network Name:    GOOGL-IPV4-3
+Network Handle:  NET-8-8-8-0-1
+Country:         US
+IP Range:        8.8.8.0 - 8.8.8.255
+Status:          active
+----------------------------------
+Abuse Contact Info
+Email:           network-abuse@google.com
+----------------------------------
+Other Contacts
+Entity Handle:   GOGL
+Roles:           registrant
+Name:            Google LLC
+Email:           dns-admin@google.com
+Phone:           +1-650-253-0000
+----------------------------------
+```
+
+### 7. Blacklist Check
+
+Checks an IP address against the VirusTotal database to evaluate its reputation.
+
+**Output Example:**
+```
+ 
+ IP Reputation Checker 
+
+============================================================
+
+[+] Checking IP: 203.0.113.42...
+[~] Querying VirusTotal API... ✓ Done!
+
+============================================================
+VirusTotal Report for 203.0.113.42
+============================================================
+
+Reputation Scores:
+  Harmless: 76
+  Malicious: 3 ⚠️ WARNING!
+  Suspicious: 1 ⚠️ Caution
+  Undetected: 12
+
+============================================================
+
+Risk Assessment:
+  ⚠️⚠️ Medium risk detected
+
+============================================================
+```
+
+## 🔄 Workflow Integration
+
+PacketNova is designed to provide a complete network analysis workflow:
+
+1. **Discovery Phase**
+   - Begin with basic IP address discovery to map devices
+   - Follow with complete network scan for detailed inventory
+
+2. **Analysis Phase**
+   - Collect traffic with your preferred packet capture tool
+   - Use the PCAP analysis feature to examine traffic patterns
+   - Apply visual analysis to identify anomalies and patterns
+
+3. **Intelligence Phase**
+   - Investigate suspicious IPs with Whois lookups
+   - Check reputation of external IPs with Blacklist Check
+   - Generate comprehensive reports for documentation
+
+4. **Action Phase**
+   - Use findings to update firewall rules
+   - Identify unauthorized devices and services
+   - Document network state for compliance and security
+
+## 🏗️ Project Structure
+
+```
+PacketNova/
+├── maiin.py             # Main application entry point and menu system
+├── networkscanner.py    # Network discovery and device identification
+├── fileanalyzer.py      # PCAP analysis engine with visualization capabilities
+├── checkblacklist.py    # IP reputation analysis via VirusTotal API
+├── whois.py             # IP/Domain WHOIS information retrieval
+└── requirement.txt      # Project dependencies
+```
+
+## 🛠️ Advanced Usage
+
+### Running as a Service
+
+Create a systemd service to run periodic scans:
 
 ```bash
-python main.py
+[Unit]
+Description=PacketNova Network Scanner
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/path/to/PacketNova
+ExecStart=/usr/bin/python3 /path/to/PacketNova/maiin.py --auto-scan
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
 ```
 
-### 🖱️ **Menu Options**
-1. 🔎 **Quick Scan**: Find all devices on your network.  
-2. 🧠 **Complete Scan**: Get detailed device profiles.  
-3. 🕵️‍♂️ **PCAP Analysis**: Dig into packet captures.  
-4. 📝 **Generate Report**: Create a professional DOCX report.  
-5. 📊 **Visualize Data**: Explore interactive PCAP charts.  
-6. 🚪 **Exit**: Close the tool.  
+### Integrating with Other Security Tools
 
-## 📊 **Sneak Peek at the Output**
+PacketNova output can be piped to other security tools:
 
-### ✅ **Network Scan Results**
-```
-🌐 Network Devices Discovered:
-IP              MAC                 Vendor                Device Type                   Services
-192.168.1.1     AA:BB:CC:DD:EE:FF  Cisco Systems         Wireless Router               80/http, 443/https
-192.168.1.101   11:22:33:44:55:66  Apple Inc.            iPhone (iOS 15)               62078/tcp
+```bash
+# Scan network and pass to intrusion detection system
+python networkscanner.py --output=json | jq '.devices[] | .ip' | xargs suricata -c /etc/suricata/suricata.yaml -i eth0
 ```
 
-### 🧪 **PCAP Analysis Snapshot**
-```
-📊 PCAP Analysis Summary
-============================================================
-File:               example.pcap
-Size:               1.45 MB
-Total Packets:      10,241
-Duration:           42.31 seconds
+### Automated Report Generation
 
-🔍 Protocol Breakdown
-------------------------------------------------------------
-TCP              7843 packets (76.6%) 🟢
-HTTP             2104 packets (20.5%) 🟠
-DNS               893 packets (8.7%) 🔵
+Set up cron jobs for periodic reporting:
+
+```bash
+# Add to crontab for daily reports at 1 AM
+0 1 * * * cd /path/to/PacketNova && python maiin.py --generate-report --input=/path/to/daily_capture.pcap --output=/path/to/reports/
 ```
 
-## 🛠️ **Under the Hood**
+## 🔒 Security Considerations
 
-- **Tech Stack**:  
-  - 🐍 **Scapy**: Precision packet analysis  
-  - 🔎 **Nmap**: Robust network scanning  
-  - 📊 **Matplotlib**: Eye-catching visualizations  
-  - 📄 **Python-docx**: Professional report generation  
+- Run with appropriate privileges (admin/root) only when necessary
+- Secure your API keys and .env file
+- Ensure you have authorization before scanning networks
+- Use on networks you own or have explicit permission to analyze
+- Some features may trigger IDS/IPS systems
 
-## 🤝 **Join the Community**
+## 🤝 Contributing
 
-Got ideas? Found a bug? Want to add a feature?  
-👉 **Open an issue** or **submit a pull request**—we’d love to collaborate!  
+We welcome contributions to PacketNova!
 
-## 📜 **License**
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-**MIT License** – Free to use, modify, and share. See [LICENSE](LICENSE) for details.
 
-## 🌍 **Your Network, Your Insights**
+## 📜 License
 
-**Analyze. Visualize. Document.**  
-With this powerful toolkit, you’re in control of your network’s story.  
-⭐ **Star the repo** and start exploring today!
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+<div align="center">
+  <p><i>Illuminate your network. Secure your data.</i></p>
+  <p>Made with ❤️ by Network Security Enthusiasts</p>
+</div>
